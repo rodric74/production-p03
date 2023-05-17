@@ -151,6 +151,12 @@ li:hover {
 	color: white;
   }
 
+  .filter-btn.active {
+	background-color: #1D6154;
+	color: white;
+  }
+  
+
 
 .gallery {
 	width: 100%;

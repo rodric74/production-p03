@@ -76,15 +76,26 @@ function displayCategories(categories){
     button.setAttribute('data-category', category.id)
     categorieFilter.appendChild(button);
   });
+
   // On ajoute un événement 'click' sur tous les boutons de filtre
   document.querySelectorAll('.filter-btn').forEach((btn) => {
-    btn.addEventListener('click', (event) => {
-      // On récupère l'id de la catégorie du bouton cliqué
-      const categoryId = event.target.getAttribute('data-category');
-      // On filtre les works en fonction de cette catégorie
-      filterWorks(categoryId);
+  btn.addEventListener('click', (event) => {
+    // On récupère l'id de la catégorie du bouton cliqué
+    const categoryId = event.target.getAttribute('data-category');
+    // On filtre les works en fonction de cette catégorie
+    filterWorks(categoryId);
+
+    // On ajoute la classe "active" au bouton cliqué
+    event.target.classList.add('active');
+
+    // On retire la classe "active" de tous les autres boutons
+    document.querySelectorAll('.filter-btn').forEach((otherBtn) => {
+      if (otherBtn !== event.target) {
+        otherBtn.classList.remove('active');
+      }
     });
   });
+});
 
   // On déclenche un clic sur le bouton "Tous" pour activer le filtre "Tous" par défaut
   allButton.click();
