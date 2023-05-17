@@ -1,16 +1,5 @@
-const urlWorks = "http://localhost:5678/api/works";
-const urlCateggories = "http://localhost:5678/api/categories";
+import { fetchWorks, fetchCategories } from './data.js';
 
-// FONCTION POUR RECUPERER LES DONNEES DE L'API
-async function fetchWorks() {
-  try {
-    const response = await fetch(urlWorks);
-    return response.ok ? await response.json() : null;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des données");
-    return null;
-  }
-}
 // FONCTION POUR AFFICHER LES WORKS
 function displayWorks(works) {
   const gallery = document.querySelector(".gallery");
@@ -36,16 +25,6 @@ function displayWorks(works) {
 // Appel de la fonction pour afficher les works au chargement de la page
 fetchWorks().then(displayWorks);
 
-// FONCTION POUR RECUPERER LES CATEGORIES DE L'API
-async function fetchCategories() {
-  try {
-    const response = await fetch(urlCateggories);
-    return response.ok ? await response.json() : null;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des données");
-    return null;
-  }
-}
 // FONCTION POUR FILTRER LES WORKS
 function filterWorks(categoryId) {
   fetchWorks().then((works) => {
