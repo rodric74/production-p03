@@ -46,5 +46,19 @@ async function fetchCategories() {
     return null;
   }
 }
-fetchCategories().then(categories => console.log(categories));
+// fetchCategories().then(categories => console.log(categories));
+
+// FONCTION POUR AFFICHER LES FILTRES DE CATEGORIE 
+function displayCategories(categories){
+  const categorieFilter = document.querySelector(".categorieFilter");
+
+  categories.forEach((category) => {
+    const button = document.createElement("button");
+    button.textContent = category.name;
+    // console.log(category);
+    button.setAttribute('data-category', category.id)
+    categorieFilter.appendChild(button);
+  })
+}
+fetchCategories().then(displayCategories);
 
