@@ -1,4 +1,5 @@
 const urlWorks = "http://localhost:5678/api/works";
+const urlCateggories = "http://localhost:5678/api/categories";
 
 // FONCTION POUR RECUPERER LES DONNEES DE L'API
 async function fetchWorks() {
@@ -34,3 +35,16 @@ function displayWorks(works) {
 
 // Appel de la fonction pour afficher les works au chargement de la page
 fetchWorks().then(displayWorks);
+
+// FONCTION POUR RECUPERER LES CATEGORIES DE L'API
+async function fetchCategories() {
+  try {
+    const response = await fetch(urlCateggories);
+    return response.ok ? await response.json() : null;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des données");
+    return null;
+  }
+}
+fetchCategories().then(categories => console.log(categories));
+
