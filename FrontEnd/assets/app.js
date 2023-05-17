@@ -51,11 +51,18 @@ async function fetchCategories() {
 // FONCTION POUR AFFICHER LES FILTRES DE CATEGORIE 
 function displayCategories(categories){
   const categorieFilter = document.querySelector(".categorieFilter");
+// AJOUT DU BOUTON "TOUS"
+  const allButton = document.createElement("button");
+  allButton.textContent = "Tous";
+  allButton.classList.add("filter-btn");
+  allButton.setAttribute("data-category", "all");
+  categorieFilter.appendChild(allButton);
 
+// AJOUT DES AUTRES BOUTONS
   categories.forEach((category) => {
     const button = document.createElement("button");
     button.textContent = category.name;
-    // console.log(category);
+    button.classList.add("filter-btn");    
     button.setAttribute('data-category', category.id)
     categorieFilter.appendChild(button);
   })
