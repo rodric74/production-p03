@@ -126,11 +126,13 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+/* START Ajout Dev FrontEnd Les boutons des filtres  */
+
 .categorieFilter {
 	display: flex;
 	justify-content: center;
 }
-/* Les boutons des filtres  */
+
 .categorieFilter button {
 	margin: 0.5em;
 	padding: 0.5em 1em;
@@ -155,7 +157,8 @@ li:hover {
 	background-color: #1D6154;
 	color: white;
   }
-  
+
+  /* END Ajout Dev FrontEnd Les boutons des filtres  */
 
 
 .gallery {
