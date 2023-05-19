@@ -8,6 +8,15 @@ window.onload = function() {
     if (token) {
       // Si un token existe, change le texte du lien en "Logout"
       loginLink.textContent = 'Logout';
+    
+      // Ajoute un message de console pour confirmer qu'un utilisateur est connecté
+      console.log('Utilisateur connecté avec succès');
+
+      // Si un token existe, retire l'attribut hidden pour rendre tous les éléments visibles
+        const hiddenElements = document.querySelectorAll('div[hidden]');
+        hiddenElements.forEach(element => {
+        element.removeAttribute('hidden');
+        });
   
       // Ajoute un gestionnaire d'événements de clic pour déconnecter l'utilisateur
       loginLink.addEventListener('click', (event) => {
@@ -23,5 +32,5 @@ window.onload = function() {
         window.location.href = 'index.html';
       });
     }
-  };
+};
   
