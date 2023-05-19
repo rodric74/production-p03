@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
 }
 ol, ul {
 	list-style: none;
@@ -137,7 +138,12 @@ nav ul li a.nav--link:hover{
 }
 
 /* START Ajout Dev FrontEnd Les boutons des filtres  */
-z
+.projects-header{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+}
 .categorieFilter {
 	display: flex;
 	justify-content: center;
