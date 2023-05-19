@@ -13,6 +13,8 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./assets/modalDeleteWork.css">
+    <link rel="stylesheet" href="./assets/modalAddWork.css">
   </head>
   <body>
     <div id="edit-bar" hidden >
@@ -102,6 +104,26 @@
         </ul>
       </nav>
     </footer>
+    <template class="modalDeleteWork">
+      <div class="modalDeleteNav"></div>
+      <div class="modalDeleteTitle"></div>
+      <div class="modalDeleteWork"></div>
+      <div class="modalDeleteSeparator"></div>
+      <div class="modalAddWorkButton"></div>
+    </template>
+    <template class="modalAddWork">
+      <div class="modalAddWorkNav"></div>
+      <div class="modalAddWorkTitle"></div>
+      <form class="modalAddForm">
+        <div class="modalAddWorkImg"></div>
+        <div class="modalAddWorkTitle"></div>
+        <div class="modalAddWorkCategorie"></div>
+        <div class="modalAddWorkSeparator"></div>
+        <button type="submit" class="modalAddWorkValidate"></button>
+      </form>
+    </template>
     <script src="assets/index.js" type="module"></script>
+    <script src="assets/modalDeletWork.js" type="module"></script>
+    <script src="assets/modalAddWork.js" type="module"></script>
   </body>
 </html>
