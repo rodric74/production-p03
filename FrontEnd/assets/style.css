@@ -143,6 +143,7 @@ nav ul li a.nav--link:hover{
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
+	margin-bottom: 50px;
 }
 .categorieFilter {
 	display: flex;
