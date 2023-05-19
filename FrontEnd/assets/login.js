@@ -31,10 +31,19 @@ document.getElementById('login--form').addEventListener('submit', (event) => {
     .then((data) => {
         // Sauvegarde le token d'authentification dans le stockage local du navigateur
         localStorage.setItem('token', data.token);
-  
+        console.log('Utilisateur connecté avec succès');
+        // Crée un nouvel élément script
+        const script = document.createElement('script');
+      
+        // Définit l'attribut src de l'élément script
+        script.src = './assets/editor.js';
+      
+        // Ajoute l'élément script à la fin du document
+        document.body.appendChild(script);
+      
         // Redirige vers la page d'accueil
         window.location.href = 'index.html';
-    })
+      })
     .catch((error) => {
         // Affiche une erreur à l'utilisateuret à la console
         document.getElementById('error-message').textContent = error.message;

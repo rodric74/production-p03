@@ -111,7 +111,8 @@ nav ul li a.nav--link:hover{
 
 #introduction {
 	display: flex;
-	align-items: center;
+	flex-direction: column;
+	align-items: start;
 }
 #introduction figure {
 	flex: 1
@@ -132,9 +133,22 @@ nav ul li a.nav--link:hover{
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2 {
+/* #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
+	
+} */
+
+.presentation{
+	display: flex;
+	align-items: center;
+}
+
+.edit--presentation{
+	margin-top: 15px;
+	margin-left: 45px;
+	width: 130px;
+	height: auto;
+	float: left;
 }
 
 /* START Ajout Dev FrontEnd Les boutons des filtres  */
@@ -143,8 +157,23 @@ nav ul li a.nav--link:hover{
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
+	align-items: center;
 	margin-bottom: 50px;
 }
+
+.edit--project{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 30%;
+	/* margin-bottom: 50px; */
+	margin-left: 100px;
+}
+
+.edit--svg{
+	width: 130px;
+}
+
 .categorieFilter {
 	display: flex;
 	justify-content: center;
@@ -177,7 +206,6 @@ nav ul li a.nav--link:hover{
 
   /* END Ajout Dev FrontEnd Les boutons des filtres  */
 
-
 .gallery {
 	width: 100%;
 	display: grid;
@@ -195,7 +223,6 @@ figcaption {
 	font-family: 'work Sans';
 	padding-top: 10px;
 }
-
 
 #contact {
 	width: 50%;

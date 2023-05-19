@@ -79,6 +79,28 @@ function displayCategories(categories){
   // On déclenche un clic sur le bouton "Tous" pour activer le filtre "Tous" par défaut
   allButton.click();
 }
-// Appel de la fonction pour afficher les catégories au chargement de la page
+
+//UTILISATEUR CONNECTÉ
+
+// Récupération du token dans le stockage local
+const token = localStorage.getItem('token');
+
+// Vérifie si le token existe
+if (token) {
+  // L'utilisateur est connecté
+  console.log('Utilisateur connecté avec succès');
+  
+  // Crée un nouvel élément script
+  const script = document.createElement('script');
+
+  // Définit l'attribut src de l'élément script
+  script.src = './assets/editor.js';
+
+  // Ajoute l'élément script à la fin du document
+  document.body.appendChild(script);
+} else {
+  // Si l'utilisateur n'est pas connecté
+  // Appel de la fonction pour afficher les catégories au chargement de la page
 fetchCategories().then(displayCategories);
+}
 
