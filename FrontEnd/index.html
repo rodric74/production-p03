@@ -121,18 +121,30 @@
       </div>
     </aside>
 
-    <!-- <div class="modal-addWork">
-      <div class="modal-addwork-overlay"></div>
-      <div class="modal-addwork-nav"></div>
-      <div class="modal-addwork-title"></div>
-      <form class="modal-addwork-form">
-        <div class="modal-addwork-figure"></div>
-        <div class="modal-addwork-title-figure"></div>
-        <div class="modal-addwork-categorie"></div>
-        <div class="modal-addwork-separator"></div>
-        <button type="submit" class="modal-addwork-validate"></button>
-      </form>
-    </div> -->
+    <aside class="modal-addWork-container" hidden>
+      <div class="overlay"></div>
+        <div class="modal-addWork">
+        <button class="arroback-btn"><img src="./assets/icons/Arrow_Back.svg" alt=""></button>
+        <button class="close-modal-btn"><img src="./assets/icons/close.svg" alt=""></button>
+        <div class="modal-addwork-title">
+          <h3>Ajout photo</h3>
+        </div>
+        <form class="modal-addwork-form">
+          <div class="modal-addwork-figure">
+            <img src="./assets/icons/picture.svg" id="addwork-img" alt="">
+            <button class="addwork-btn" >+Ajouter photo</button>
+            <p>jpg, png: 4mo max</p>
+          </div>
+          <label for="addtitle">Titre</label>
+          <input type="text" name="addtitle" class="modal-addwork-title-figure">
+          <label for="addlist">Catégorie</label>
+          <input type="list" name="addlist" class="modal-addwork-categorie" >
+          <hr class="modal-delete-separator">
+          <button type="submit"class="modal-addwork-validate">Valider</button>
+        </form>
+      </div>
+    </aside>
+
     <script src="assets/index.js" type="module"></script>
     <script src="assets/modalDeletWork.js" type="module"></script>
     <script src="assets/modalAddWork.js" type="module"></script>
