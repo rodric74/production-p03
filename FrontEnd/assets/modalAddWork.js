@@ -22,17 +22,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     overlay.addEventListener('click', closeAddWorkModal);
 
     // Récupérer les catégories
-  const categories = await fetchCategories();
+    const categories = await fetchCategories();
 
-  // Générer les options des catégories
-  const options = categories.map((category) => `
-    <option value="${category.id}">${category.name}</option>
-  `);
+    // Générer les options des catégories
+    const options = categories.map((category) => `
+        <option value="${category.id}">${category.name}</option>
+    `);
 
-  // Ajouter les options au champ de sélection
-  categorieInput.innerHTML = `
-    <option value=""</option>
-    ${options.join('')}
-  `;
-  });
+    // Ajouter les options au champ de sélection
+    categorieInput.innerHTML = `
+        <option value=""</option>
+        ${options.join('')}
+    `;
+});
   

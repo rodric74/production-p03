@@ -84,6 +84,12 @@
     border-radius: 50px;
     border: none;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.addwork-btn:hover{
+    background:#306685;
+    color: #CBD6DC;
 }
 
 .modal-addwork-figure p{
