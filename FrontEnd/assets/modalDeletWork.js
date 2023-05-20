@@ -81,3 +81,16 @@ function attachDeleteListeners() {
     });
   });
 }
+
+//OUVERTURE DE MODALADDWORK
+document.addEventListener('DOMContentLoaded', () => {
+  const addWorkButton = document.querySelector('.modal-addwork-button');
+  const addWorkModal = document.querySelector('.modal-addWork-container');
+  const deleteWorkModal = document.querySelector('.modal-delete-work-container');
+
+  addWorkButton.addEventListener('click', () => {
+    addWorkModal.style.display = 'flex';
+    deleteWorkModal.style.display = 'none';
+  });
+});
+
