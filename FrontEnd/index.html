@@ -11,12 +11,14 @@
       href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
       rel="stylesheet"
     />
+    <script src="https://kit.fontawesome.com/3b6361b144.js" crossorigin="anonymous"></script>
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
     <link rel="stylesheet" href="./assets/modalDeleteWork.css">
     <link rel="stylesheet" href="./assets/modalAddWork.css">
   </head>
   <body>
+    
     <div id="edit-bar" hidden >
       <div id="edit-bar-tools">
         <div id="icon--edit--bar">
@@ -73,9 +75,9 @@
           <div class="edit--project">
             <h2>Mes Projets</h2>
             <a href="#">
-              <div class="edit--svg" hidden>
-                <img src="./assets/icons/edit-Icon.svg" id="edit--icon--project" alt="">
-              </div> 
+              <div class="edit--svg" id="edit--svg" hidden>
+                <img src="./assets/icons/edit-Icon.svg" alt="">
+            </div> 
             </a>
           </div>
         </div>
@@ -104,26 +106,33 @@
         </ul>
       </nav>
     </footer>
-    <template class="modal-delete-Work">
-      <div class="modal-delet-work-overlay"></div>
-      <div class="modal-delete-nav"></div>
-      <div class="modal-delete-title"></div>
-      <div class="modal-delete-figure"></div>
-      <div class="modal-delete-separator"></div>
-      <div class="modal-addwork-button"></div>
-    </template>
-    <template class="modal-addWork">
+   
+    <aside class="modal-delete-work-container" hidden>
+      <div class="overlay"></div>
+      <div class="modal-delete-work">
+          <button class="close-modal-btn"><img src="./assets/icons/close.svg" alt=""></i></button>
+        <div class="modal-delete-title">
+          <h3>Galerie photo</h3>
+        </div>
+        <div class="modal-delete-figure"></div>
+        <hr class="modal-delete-separator">
+        <button type="submit" class="modal-addwork-button">Ajouter une photo</button>  
+        <p class="delete-gallery">Supprimer la galerie</p>      
+      </div>
+    </aside>
+
+    <!-- <div class="modal-addWork">
       <div class="modal-addwork-overlay"></div>
       <div class="modal-addwork-nav"></div>
       <div class="modal-addwork-title"></div>
       <form class="modal-addwork-form">
         <div class="modal-addwork-figure"></div>
-        <div class="modal-addwork-title"></div>
+        <div class="modal-addwork-title-figure"></div>
         <div class="modal-addwork-categorie"></div>
         <div class="modal-addwork-separator"></div>
         <button type="submit" class="modal-addwork-validate"></button>
       </form>
-    </template>
+    </div> -->
     <script src="assets/index.js" type="module"></script>
     <script src="assets/modalDeletWork.js" type="module"></script>
     <script src="assets/modalAddWork.js" type="module"></script>

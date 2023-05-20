@@ -1,0 +1,107 @@
+
+
+.modal-delete-work-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  display: none;
+}
+
+.modal-delete-work-container.active {
+  display: flex;
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.modal-delete-work {
+  position: relative;
+  width: 630px;
+  height: 730px;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+
+
+
+.close-modal-btn {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  font-size: 1.5em; 
+  color: #333; 
+}
+
+.modal-delete-title{
+  margin-top: 60px;
+  font-size: 26px;
+  letter-spacing: 2px;
+}
+
+.modal-delete-figure{
+  width: 425px;
+  height: 380px;
+  background-color: red;
+  margin-top: 45px;
+  margin-bottom: 45px;
+}
+
+.modal-delete-separator{
+  border: none;
+  border-top: 1px solid #B3B3B3;
+  width: 425px;
+}
+
+.modal-addwork-button{
+  margin-top: 35px;
+  background-color: #1D6154 ;
+  width: 237px;
+  height: 36px;
+  font-family: "syne";
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal-addwork-button:hover{
+  background-color: white;
+  color: #1D6154;
+  border: 1px solid #1D6154;
+}
+
+.delete-gallery{
+  font-family: "syne";
+  color: #D65353;
+  margin-top: 20px;
+  /* line-height: 17px; */
+}
+
+
+
+

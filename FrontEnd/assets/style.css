@@ -174,7 +174,17 @@ nav ul li a.nav--link:hover{
 
 #introduction article {
 	flex: 1
+	
 }
+
+article {
+	line-height: 1.4;
+}
+
+article p{
+	text-align: justify;
+}
+
 #introduction h2 {
 	margin-bottom: 1em;
 }
@@ -194,7 +204,7 @@ nav ul li a.nav--link:hover{
 
 .edit--presentation{
 	margin-top: 15px;
-	width: 130px;
+	width: 100px;
 	height: auto;
 	
 }

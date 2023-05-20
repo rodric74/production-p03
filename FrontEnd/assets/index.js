@@ -1,7 +1,7 @@
 import { fetchWorks, fetchCategories } from './data.js';
-
+console.log('Le script index.js est chargé et exécuté.');
 // FONCTION POUR AFFICHER LES WORKS
-function displayWorks(works) {
+export function displayWorks(works) {
   const gallery = document.querySelector(".gallery");
   // je vide le contenu de la galerie pour la remplir avec de nouvelles données
     gallery.innerHTML = "";
@@ -103,4 +103,16 @@ if (token) {
   // Appel de la fonction pour afficher les catégories au chargement de la page
 fetchCategories().then(displayCategories);
 }
+
+// OUVERTURE MODALE en mode edition  
+
+document.addEventListener('DOMContentLoaded', function() {
+  let modal = document.querySelector('.modal-delete-work-container');
+  let editBtn = document.querySelector('#edit--svg');
+
+  editBtn.addEventListener('click', function() {
+      modal.style.display = "flex";
+  });
+});
+
 
