@@ -20,6 +20,9 @@ async function thumbnails() {
   modalFigure.innerHTML = works.map(work => `
     <figure class="work-item-modal">
       <img src="${work.imageUrl}" alt="${work.title}" />
+      <div class="overlay-image-container">
+        <img id="overlay-image" src="./assets/icons/Frame.svg" alt="Frame" />
+      </div>
       <img src="./assets/icons/trash.svg" alt="Supprimer l'oeuvre" id="delete-icon">
     </figure>
   `).join("");
