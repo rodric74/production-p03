@@ -13,9 +13,9 @@
   display: none;
 }
 
-/* .modal-delete-work-container.active {
+.modal-delete-work-container.active {
   display: flex;
-} */
+}
 
 
 .overlay {
@@ -64,17 +64,9 @@
 .modal-delete-figure{
   width: 425px;
   height: 380px;
-  /* background-color: red; */
+  background-color: red;
   margin-top: 45px;
   margin-bottom: 45px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.modal-delete-figure img {
-  width: 80px;
-  height: 110px;
 }
 
 .modal-delete-separator{

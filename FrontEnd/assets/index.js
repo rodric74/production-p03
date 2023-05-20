@@ -1,6 +1,5 @@
 import { fetchWorks, fetchCategories } from './data.js';
 console.log('Le script index.js est chargé et exécuté.');
-
 // FONCTION POUR AFFICHER LES WORKS
 export function displayWorks(works) {
   const gallery = document.querySelector(".gallery");
@@ -77,7 +76,7 @@ function displayCategories(categories){
   });
 });
 
-  // activer TOUS par défaut
+  // On déclenche un clic sur le bouton "Tous" pour activer le filtre "Tous" par défaut
   allButton.click();
 }
 
