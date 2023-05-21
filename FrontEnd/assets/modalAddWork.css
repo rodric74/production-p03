@@ -153,3 +153,8 @@ font-size: 14px ;
 color: #ffffff;
 margin-top: 20px;
 }
+
+.validate-button-enabled {
+    background-color: #1D6154;
+    cursor: pointer;
+  }

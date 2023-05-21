@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   const initialDiv = document.querySelector('.figure-initial');
   const validateButton = document.querySelector('.modal-addwork-validate');
   const titleInput = document.querySelector('.modal-addwork-title-figure');
+  const errorElement = document.querySelector('.modal-addwork-error');
+  let selectedFile = null;
 
-  // FERMETURE MODALE - Retour delete modale
+  //FERMETURE MODALE - RETOUR DELETE MODALE
   const closeAddWorkModal = () => {
     addWorkModal.style.display = 'none';
   };
@@ -26,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   closeButton.addEventListener('click', closeAddWorkModal);
   overlay.addEventListener('click', closeAddWorkModal);
 
-  // GESTION CATEGORIES DANS INPUT
+  // GESTION DES CATEGORIES
   const categories = await fetchCategories();
 
   // Générer les options des catégories
@@ -40,49 +42,54 @@ document.addEventListener('DOMContentLoaded', async () => {
     ${options.join('')}
   `;
 
-  // Gestion du titre et de la catégorie
-  titleInput.addEventListener('input', checkValidationConditions);
-  categorieInput.addEventListener('change', checkValidationConditions);
-
- //AJOUT IMAGE 
+  // GESTION AJOUT IMAGE
+  // Création d'un nouvel élément input de type file
   const fileInput = document.createElement('input');
   fileInput.type = 'file';
   fileInput.accept = '.png, .jpg, .jpeg';
 
   fileInput.addEventListener('change', (event) => {
-    const selectedFile = event.target.files[0];
-    if (selectedFile && selectedFile.size <= 4 * 1024 * 1024) {
-      const imageURL = URL.createObjectURL(selectedFile);
+    // Récupération du fichier sélectionné
+    const file = event.target.files[0];
 
-      const imgElement = document.createElement('img');
+    // Vérification de la taille du fichier
+    if (file && file.size <= 4 * 1024 * 1024) {
+      selectedFile = file; // Définir selectedFile seulement si le fichier est valide
+
+      const imageURL = URL.createObjectURL(selectedFile); // Création de l'URL objet pour l'image
+
+      const imgElement = document.createElement('img'); // Création d'un élément img
       imgElement.onload = function () {
-        URL.revokeObjectURL(imageURL);
+        URL.revokeObjectURL(imageURL); // L'image est chargée, on révoque l'URL Blob
       };
-      imgElement.src = imageURL;
-      displayDiv.appendChild(imgElement);
-      initialDiv.style.display = 'none';
-
-      checkValidationConditions(); // Vérifier les conditions pour activer le bouton de validation
+      imgElement.src = imageURL; // Attribution de l'URL objet comme source de l'image
+      displayDiv.appendChild(imgElement); // Ajout de l'élément img à la div d'affichage
+      initialDiv.style.display = 'none'; // Masquage de la div initiale
     } else {
-      console.log('Le fichier sélectionné dépasse la taille maximale autorisée de 4 Mo.');
-      const errorElement = document.querySelector('.modal-addwork-error');
+      console.error('Le fichier sélectionné dépasse la taille maximale autorisée de 4 Mo.');
       errorElement.textContent = 'Sélectionnez un fichier de 4 Mo MAX';
     }
+
+    checkValidationConditions(); // Vérification des conditions pour activer le bouton de validation
   });
 
-  uploadButton.addEventListener('click', () => {
-    fileInput.value = null;
+  uploadButton.addEventListener('click', (event) => {
+    event.stopPropagation();
+
     fileInput.click();
   });
 
-  // CONDITIONS DE VALIDATION
+ // Gestion du titre et de la catégorie
+  titleInput.addEventListener('input', checkValidationConditions);
+  categorieInput.addEventListener('change', checkValidationConditions);
+
   function checkValidationConditions() {
-    if (titleInput.value.trim() !== '' && categorieInput.value !== '') {
+    if (titleInput.value.trim() !== '' && categorieInput.value !== '' && selectedFile) {
       validateButton.disabled = false;
-      validateButton.style.backgroundColor = '#1D6154';
+      validateButton.classList.add('validate-button-enabled');
     } else {
       validateButton.disabled = true;
-      validateButton.style.backgroundColor = '';
+      validateButton.classList.remove('validate-button-enabled');
     }
   }
 });
