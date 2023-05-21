@@ -69,6 +69,25 @@
     align-items: center;
 }
 
+.display-figure {
+    overflow: hidden;
+  }
+.display-figure img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+
+
+.figure-initial{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    
+}
+
 #addwork-img{
     width: 60px ;
     margin-bottom: 20px;
@@ -116,6 +135,12 @@
     margin-bottom: 50px;
 }
 
+.modal-addwork-error{
+    padding-top: 15px;
+    font-family: "syne";
+    font-size: 14px;
+    color: rgba(253, 48, 89, 0.719);
+}
 .modal-addwork-validate{
     width: 237px;
 height: 36px;
@@ -124,5 +149,5 @@ border-radius: 60px;
 border: none;
 font-size: 14px ;
 color: #ffffff;
-margin-top: 30px;
+margin-top: 20px;
 }

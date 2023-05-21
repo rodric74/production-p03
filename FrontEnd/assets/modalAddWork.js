@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     const backButton = document.querySelector('.modal-addWork-container .arroback-btn');
     const categorieInput = document.querySelector('.modal-addwork-categorie');
 
-    //FERMETURE MODALE
+    //FERMETURE MODALE - RETOUR DELETE MODALE
     const closeAddWorkModal = () => {
       addWorkModal.style.display = 'none';
     };
-    //RETOUR DELETE MODALE
+
     backButton.addEventListener('click', () => {
       closeAddWorkModal();
       deleteWorkModal.style.display = 'flex';
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     closeButton.addEventListener('click', closeAddWorkModal);
     overlay.addEventListener('click', closeAddWorkModal);
 
-    // Récupérer les catégories
+    // GESTION DES CATEGORIES
     const categories = await fetchCategories();
 
     // Générer les options des catégories
@@ -36,3 +36,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     `;
 });
   
+//SELECTION DE FICHIER 
+const uploadButton = document.getElementById('uploadButton');
+uploadButton.addEventListener('click', () => {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '.png, .jpg, .jpeg'; // Restreindre les types de fichiers
+  fileInput.addEventListener('change', (event) => {
+    const selectedFile = event.target.files[0];
+    if (selectedFile && selectedFile.size <= 4 * 1024 * 1024) { // Vérification de la taille
+      // Le fichier est conforme à la taille requise
+      // Faites quelque chose avec le fichier sélectionné
+      console.log('Fichier sélectionné :', selectedFile);
+    } else {
+      // Le fichier dépasse la taille requise
+      console.log('Le fichier sélectionné dépasse la taille maximale autorisée de 4 Mo.');
+    }
+  });
+  fileInput.click();
+});

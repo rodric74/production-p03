@@ -131,15 +131,19 @@
         </div>
         <form class="modal-addwork-form">
           <div class="modal-addwork-figure">
-            <img src="./assets/icons/picture.svg" id="addwork-img" alt="">
-            <button class="addwork-btn" >+Ajouter photo</button>
-            <p>jpg, png: 4mo max</p>
+            <div class="display-figure"></div>
+            <div class="figure-initial" >
+              <img src="./assets/icons/picture.svg" id="addwork-img" alt="">
+              <button class="addwork-btn" id="uploadButton" >+Ajouter photo</button>
+              <p>jpg, png: 4mo max</p>
+            </div>
           </div>
           <label for="addtitle">Titre</label>
           <input type="text" name="addtitle" class="modal-addwork-title-figure">
           <label for="addlist">Catégorie</label>
           <select name="addlist" class="modal-addwork-categorie"></select>
           <hr class="modal-delete-separator">
+          <div class="modal-addwork-error"><p>error message</p></div>
           <button type="submit"class="modal-addwork-validate">Valider</button>
         </form>
       </div>
