@@ -7,11 +7,13 @@ document.addEventListener('DOMContentLoaded', async () => {
   const overlay = document.querySelector('.modal-addWork-container .overlay');
   const backButton = document.querySelector('.modal-addWork-container .arroback-btn');
   const categorieInput = document.querySelector('.modal-addwork-categorie');
-  const uploadButton = document.getElementById('uploadButton'); 
-  const displayDiv = document.querySelector('.display-figure'); 
-  const initialDiv = document.querySelector('.figure-initial'); 
+  const uploadButton = document.getElementById('uploadButton');
+  const displayDiv = document.querySelector('.display-figure');
+  const initialDiv = document.querySelector('.figure-initial');
+  const validateButton = document.querySelector('.modal-addwork-validate');
+  const titleInput = document.querySelector('.modal-addwork-title-figure');
 
-  //FERMETURE MODALE - RETOUR DELETE MODALE
+  // FERMETURE MODALE - Retour delete modale
   const closeAddWorkModal = () => {
     addWorkModal.style.display = 'none';
   };
@@ -24,48 +26,63 @@ document.addEventListener('DOMContentLoaded', async () => {
   closeButton.addEventListener('click', closeAddWorkModal);
   overlay.addEventListener('click', closeAddWorkModal);
 
-  // GESTION DES CATEGORIES
+  // GESTION CATEGORIES DANS INPUT
   const categories = await fetchCategories();
 
-    // Générer les options des catégories
-    const options = categories.map((category) => `
-      <option value="${category.id}">${category.name}</option>
-    `);
+  // Générer les options des catégories
+  const options = categories.map((category) => `
+    <option value="${category.id}">${category.name}</option>
+  `);
 
-    // Ajouter les options au champ de sélection
-    categorieInput.innerHTML = `
-      <option value=""</option>
-      ${options.join('')}
-    `;
-    
-  //GESTION AJOUT IMAGE
-    uploadButton.addEventListener('click', () => {
-      // Création d'un nouvel élément input de type file
-      const fileInput = document.createElement('input');
-      fileInput.type = 'file';
-      fileInput.accept = '.png, .jpg, .jpeg';
+  // Ajouter les options au champ de sélection
+  categorieInput.innerHTML = `
+    <option value=""></option>
+    ${options.join('')}
+  `;
 
-    fileInput.addEventListener('change', (event) => {
-      const selectedFile = event.target.files[0]; // Récupération du fichier sélectionné
-      // Vérification de la taille du fichier
-      if (selectedFile && selectedFile.size <= 4 * 1024 * 1024) {
-        const imageURL = URL.createObjectURL(selectedFile); // Création de l'URL objet pour l'image
+  // Gestion du titre et de la catégorie
+  titleInput.addEventListener('input', checkValidationConditions);
+  categorieInput.addEventListener('change', checkValidationConditions);
 
-        const imgElement = document.createElement('img'); // Création d'un élément img
-        imgElement.onload = function() {
-          URL.revokeObjectURL(imageURL); // L'image est chargée, on revoque l'URL Blob
-        };
-        imgElement.src = imageURL; // Attribution de l'URL objet comme source de l'image
-        displayDiv.appendChild(imgElement); // Ajout de l'élément img à la div d'affichage
-        initialDiv.style.display = 'none'; // Masquage de la div initiale
-      } else {
-        console.log('Le fichier sélectionné dépasse la taille maximale autorisée de 4 Mo.');
-        const errorElement = document.querySelector('.modal-addwork-error');
-        errorElement.textContent = 'Sélectionnez un fichier de 4mo MAX';
-      }
-    });
+ //AJOUT IMAGE 
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '.png, .jpg, .jpeg';
 
-    fileInput.value = null; // Réinitialiser la valeur de l'input file
+  fileInput.addEventListener('change', (event) => {
+    const selectedFile = event.target.files[0];
+    if (selectedFile && selectedFile.size <= 4 * 1024 * 1024) {
+      const imageURL = URL.createObjectURL(selectedFile);
+
+      const imgElement = document.createElement('img');
+      imgElement.onload = function () {
+        URL.revokeObjectURL(imageURL);
+      };
+      imgElement.src = imageURL;
+      displayDiv.appendChild(imgElement);
+      initialDiv.style.display = 'none';
+
+      checkValidationConditions(); // Vérifier les conditions pour activer le bouton de validation
+    } else {
+      console.log('Le fichier sélectionné dépasse la taille maximale autorisée de 4 Mo.');
+      const errorElement = document.querySelector('.modal-addwork-error');
+      errorElement.textContent = 'Sélectionnez un fichier de 4 Mo MAX';
+    }
+  });
+
+  uploadButton.addEventListener('click', () => {
+    fileInput.value = null;
     fileInput.click();
   });
+
+  // CONDITIONS DE VALIDATION
+  function checkValidationConditions() {
+    if (titleInput.value.trim() !== '' && categorieInput.value !== '') {
+      validateButton.disabled = false;
+      validateButton.style.backgroundColor = '#1D6154';
+    } else {
+      validateButton.disabled = true;
+      validateButton.style.backgroundColor = '';
+    }
+  }
 });

@@ -30,11 +30,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       `
       )
       .join('');
-    // Ajoutez les écouteurs d'événements après avoir créé les vignettes
     attachDeleteListeners();
   }
 
-  // Appeler la fonction pour générer les vignettes dans la modal
   await thumbnails();
 });
 
