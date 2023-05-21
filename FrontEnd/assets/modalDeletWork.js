@@ -87,10 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const addWorkButton = document.querySelector('.modal-addwork-button');
   const addWorkModal = document.querySelector('.modal-addWork-container');
   const deleteWorkModal = document.querySelector('.modal-delete-work-container');
+  const displayDiv = document.querySelector('.display-figure');
+  const uploadForm = document.querySelector('.modal-addwork-form');
+  const initialDiv = document.querySelector('.figure-initial');
 
   addWorkButton.addEventListener('click', () => {
     addWorkModal.style.display = 'flex';
     deleteWorkModal.style.display = 'none';
+    displayDiv.innerHTML = ''; // Vider le contenu de la div d'affichage
+    uploadForm.reset(); // reset du formulaire
+    initialDiv.style.display = 'flex'; //affichage des inputs initiaux
   });
 });
 
