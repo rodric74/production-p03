@@ -71,10 +71,12 @@
 
 .display-figure {
     overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 .display-figure img {
-    max-width: 100%;
-    height: auto;
+    max-width: auto;
+    height: 100%;
   }
   
 

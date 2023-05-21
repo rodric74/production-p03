@@ -38,20 +38,29 @@ document.addEventListener('DOMContentLoaded', async () => {
   
 //SELECTION DE FICHIER 
 const uploadButton = document.getElementById('uploadButton');
+const displayDiv = document.querySelector('.display-figure');
+const initialDiv = document.querySelector('.figure-initial');
+
 uploadButton.addEventListener('click', () => {
   const fileInput = document.createElement('input');
   fileInput.type = 'file';
-  fileInput.accept = '.png, .jpg, .jpeg'; // Restreindre les types de fichiers
+  fileInput.accept = '.png, .jpg, .jpeg';
+
   fileInput.addEventListener('change', (event) => {
     const selectedFile = event.target.files[0];
-    if (selectedFile && selectedFile.size <= 4 * 1024 * 1024) { // Vérification de la taille
-      // Le fichier est conforme à la taille requise
-      // Faites quelque chose avec le fichier sélectionné
-      console.log('Fichier sélectionné :', selectedFile);
+    if (selectedFile && selectedFile.size <= 4 * 1024 * 1024) {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const imgElement = document.createElement('img');
+        imgElement.src = reader.result;
+        displayDiv.appendChild(imgElement);
+        initialDiv.style.display = 'none';
+      };
+      reader.readAsDataURL(selectedFile);
     } else {
-      // Le fichier dépasse la taille requise
       console.log('Le fichier sélectionné dépasse la taille maximale autorisée de 4 Mo.');
     }
   });
+
   fileInput.click();
 });
