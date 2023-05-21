@@ -1,4 +1,5 @@
-import { fetchCategories } from './data.js';
+import { fetchCategories, fetchWorks } from './data.js';
+import {displayWorks} from './index.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   const addWorkModal = document.querySelector('.modal-addWork-container');
@@ -73,10 +74,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     checkValidationConditions(); // Vérification des conditions pour activer le bouton de validation
   });
 
-  uploadButton.addEventListener('click', (event) => {
+  uploadButton.addEventListener('click', () => {
     event.stopPropagation();
-
-    fileInput.click();
+     fileInput.click();
   });
 
  // Gestion du titre et de la catégorie
@@ -92,4 +92,43 @@ document.addEventListener('DOMContentLoaded', async () => {
       validateButton.classList.remove('validate-button-enabled');
     }
   }
+
+//Envoyer le work au back-end
+validateButton.addEventListener('click', async (event) => {
+  event.preventDefault(); 
+
+  // Créer un objet FormData et y ajouter les données du formulaire
+  const formData = new FormData();
+  formData.append('title', titleInput.value);
+  formData.append('category', categorieInput.value);
+  formData.append('image', selectedFile); // Ajouter le fichier sélectionné
+
+  // Récupérer le token de l'utilisateur
+  const userToken = localStorage.getItem('token');
+
+  // Envoyer les données au back-end
+  const response = await fetch('http://localhost:5678/api/works', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + userToken,
+    },
+    body: formData,
+  });
+
+  // Vérifier la réponse
+  if (response.ok) {
+    console.log('Work envoyé avec succès');
+    // Fermer la modale et revenir à la page principale
+    closeAddWorkModal();
+
+    // Récupérer à nouveau toutes les données de travail
+    const works = await fetchWorks();
+
+    // Afficher les données de travail
+    displayWorks(works);
+  } else {
+    console.error('Erreur lors de l\'envoi du travail:', response.statusText);
+  }
 });
+});
+

@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const modalFigure = document.querySelector('.modal-delete-figure');
 
   // Générer les vignettes des works dans la modal
-  async function thumbnails() {
+   async function thumbnails() {
     const works = await fetchWorks();
     modalFigure.innerHTML = works
       .map(
