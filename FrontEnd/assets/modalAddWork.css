@@ -80,14 +80,12 @@
     height: 100%;
   }
   
-
-
 .figure-initial{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 90%;
+  
     
 }
 
@@ -97,7 +95,13 @@
     margin-top: 20px;
 }
 
-.addwork-btn{
+#add-image{
+    display: none;
+
+    
+}
+
+.add-image{
     width: 173px;
     height: 36px;
     background: #CBD6DC;
@@ -107,9 +111,13 @@
     border: none;
     margin-bottom: 10px;
     cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-right: 0;
 }
 
-.addwork-btn:hover{
+.add-image:hover{
     background:#306685;
     color: #CBD6DC;
 }

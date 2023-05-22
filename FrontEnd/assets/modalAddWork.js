@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const overlay = document.querySelector('.modal-addWork-container .overlay');
   const backButton = document.querySelector('.modal-addWork-container .arroback-btn');
   const categorieInput = document.querySelector('.modal-addwork-categorie');
-  const uploadButton = document.getElementById('uploadButton');
+  const fileInput = document.querySelector('#add-image');
   const displayDiv = document.querySelector('.display-figure');
   const initialDiv = document.querySelector('.figure-initial');
   const validateButton = document.querySelector('.modal-addwork-validate');
@@ -44,11 +44,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   `;
 
   // GESTION AJOUT IMAGE
-  // Création d'un nouvel élément input de type file
-  const fileInput = document.createElement('input');
-  fileInput.type = 'file';
-  fileInput.accept = '.png, .jpg, .jpeg';
-
   fileInput.addEventListener('change', (event) => {
     // Récupération du fichier sélectionné
     const file = event.target.files[0];
@@ -74,10 +69,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     checkValidationConditions(); // Vérification des conditions pour activer le bouton de validation
   });
 
-  uploadButton.addEventListener('click', () => {
-    event.stopPropagation();
-     fileInput.click();
-  });
+  // uploadButton.addEventListener('click', () => {
+  //   event.stopPropagation();
+  //    fileInput.click();
+  // });
 
  // Gestion du titre et de la catégorie
   titleInput.addEventListener('input', checkValidationConditions);
