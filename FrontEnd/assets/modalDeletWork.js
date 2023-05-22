@@ -25,6 +25,7 @@ export async function thumbnails() {
           <img id="overlay-image" src="./assets/icons/Frame.svg" alt="Frame" />
         </div>
         <img src="./assets/icons/trash.svg" alt="Supprimer l'oeuvre" id="delete-icon">
+        <figcaption>éditer</figcaption>
       </figure>
     `
     )
@@ -36,16 +37,15 @@ export async function thumbnails() {
 
 // FONCTION POUR SUPPRESSION DES WORKS
 async function deleteWork(id) {
-  const token = localStorage.getItem('token');
   try {
     const response = await fetch(`http://localhost:5678/api/works/${id}`, {
       method: 'DELETE',
       headers: {
-        Accept: '*/*',
-        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/Json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
-    console.log('Delete response:', response);
+    // console.log('Delete response:', response);
 
     if (!response.ok) {
       throw new Error('Error while deleting work');
@@ -104,4 +104,3 @@ document.addEventListener('DOMContentLoaded', () => {
     initialDiv.style.display = 'flex'; //affichage des inputs initiaux
   });
 });
-

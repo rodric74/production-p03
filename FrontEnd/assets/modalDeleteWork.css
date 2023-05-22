@@ -101,19 +101,41 @@
 }
 
 .modal-delete-figure{
-  width: 425px;
+  width: 440px;
   height: 380px;
   /* background-color: red; */
   margin-top: 45px;
   margin-bottom: 45px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start; 
+  align-content: flex-start;
+}
+
+.work-item-modal {
+  min-height: 150px; /* Ajustez cette valeur selon vos besoins */
+}
+
+.modal-delete-figure .work-item-modal {
+  margin-right: 10px;
+
 }
 
 .modal-delete-figure img {
   width: 80px;
   height: 110px;
+}
+
+.modal-delete-figure .work-item-modal:nth-child(5n) {
+  margin-right: 0;
+}
+
+.modal-delete-figure figcaption {
+  text-align: left;
+  /* margin-top: 5px;  */
+  color: black;
+  font-size: 12px;
+  padding-top: 2px;
 }
 
 .modal-delete-separator{
