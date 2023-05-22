@@ -11,46 +11,50 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // AFFICHER LES WORKS EN VIGNETTE
-document.addEventListener('DOMContentLoaded', async () => {
-  const modalFigure = document.querySelector('.modal-delete-figure');
+// Générer les vignettes des works dans la modal
+const modalFigure = document.querySelector('.modal-delete-figure');
 
-  // Générer les vignettes des works dans la modal
-   async function thumbnails() {
-    const works = await fetchWorks();
-    modalFigure.innerHTML = works
-      .map(
-        (work) => `
-        <figure class="work-item-modal" data-id="${work.id}">
-          <img src="${work.imageUrl}" alt="${work.title}" />
-          <div class="overlay-image-container">
-            <img id="overlay-image" src="./assets/icons/Frame.svg" alt="Frame" />
-          </div>
-          <img src="./assets/icons/trash.svg" alt="Supprimer l'oeuvre" id="delete-icon">
-        </figure>
-      `
-      )
-      .join('');
-    attachDeleteListeners();
-  }
+export async function thumbnails() {
+  const works = await fetchWorks();
+  modalFigure.innerHTML = works
+    .map(
+      (work) => `
+      <figure class="work-item-modal" data-id="${work.id}">
+        <img src="${work.imageUrl}" alt="${work.title}" />
+        <div class="overlay-image-container">
+          <img id="overlay-image" src="./assets/icons/Frame.svg" alt="Frame" />
+        </div>
+        <img src="./assets/icons/trash.svg" alt="Supprimer l'oeuvre" id="delete-icon">
+      </figure>
+    `
+    )
+    .join('');
+  attachDeleteListeners();
+}
+   thumbnails();
 
-  await thumbnails();
-});
 
 // FONCTION POUR SUPPRESSION DES WORKS
 async function deleteWork(id) {
   const token = localStorage.getItem('token');
-  const response = await fetch(`http://localhost:5678/api/works/${id}`, {
-    method: 'DELETE',
-    headers: {
-      Accept: '*/*',
-      Authorization: `Bearer ${token}`,
-    },
-  });
+  try {
+    const response = await fetch(`http://localhost:5678/api/works/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept: '*/*',
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log('Delete response:', response);
 
-  if (!response.ok) {
-    throw new Error('Error while deleting work');
+    if (!response.ok) {
+      throw new Error('Error while deleting work');
+    }
+  } catch (error) {
+    console.error('Error during delete:', error);
   }
 }
+
 
 // DECLANCHER LA FONCTION DE SUPPRESSION
 function attachDeleteListeners() {
@@ -58,6 +62,7 @@ function attachDeleteListeners() {
     deleteIcon.addEventListener('click', async (event) => {
       const workItem = event.target.closest('.work-item-modal');
       const workId = workItem.dataset.id;
+      console.log("Deleting work with ID: ", workId);
       try {
         await deleteWork(workId);
 
@@ -83,6 +88,7 @@ function attachDeleteListeners() {
 //OUVERTURE DE MODALADDWORK
 document.addEventListener('DOMContentLoaded', () => {
   const addWorkButton = document.querySelector('.modal-addwork-button');
+  console.log(addWorkButton);
   const addWorkModal = document.querySelector('.modal-addWork-container');
   const deleteWorkModal = document.querySelector('.modal-delete-work-container');
   const displayDiv = document.querySelector('.display-figure');
@@ -90,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialDiv = document.querySelector('.figure-initial');
 
   addWorkButton.addEventListener('click', () => {
+    console.log('Button clicked');
     addWorkModal.style.display = 'flex';
     deleteWorkModal.style.display = 'none';
     displayDiv.innerHTML = ''; // Vider le contenu de la div d'affichage

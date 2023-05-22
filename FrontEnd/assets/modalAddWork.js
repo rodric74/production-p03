@@ -1,5 +1,6 @@
 import { fetchCategories, fetchWorks } from './data.js';
 import {displayWorks} from './index.js';
+import {thumbnails} from './modalDeletWork.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
   const addWorkModal = document.querySelector('.modal-addWork-container');
@@ -115,12 +116,15 @@ validateButton.addEventListener('click', async (event) => {
     console.log('Work envoyé avec succès');
     // Fermer la modale et revenir à la page principale
     closeAddWorkModal();
-
+  
     // Récupérer à nouveau toutes les données de travail
     const works = await fetchWorks();
-
+  
     // Afficher les données de travail
     displayWorks(works);
+  
+    // Mettre à jour les vignettes dans la modale de suppression
+    thumbnails();
   } else {
     console.error('Erreur lors de l\'envoi du travail:', response.statusText);
   }
