@@ -45,7 +45,6 @@ async function deleteWork(id) {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
     });
-    // console.log('Delete response:', response);
 
     if (!response.ok) {
       throw new Error('Error while deleting work');
@@ -88,7 +87,6 @@ function attachDeleteListeners() {
 //OUVERTURE DE MODALADDWORK
 document.addEventListener('DOMContentLoaded', () => {
   const addWorkButton = document.querySelector('.modal-addwork-button');
-  console.log(addWorkButton);
   const addWorkModal = document.querySelector('.modal-addWork-container');
   const deleteWorkModal = document.querySelector('.modal-delete-work-container');
   const displayDiv = document.querySelector('.display-figure');
@@ -96,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialDiv = document.querySelector('.figure-initial');
 
   addWorkButton.addEventListener('click', () => {
-    console.log('Button clicked');
     addWorkModal.style.display = 'flex';
     deleteWorkModal.style.display = 'none';
     displayDiv.innerHTML = ''; // Vider le contenu de la div d'affichage
