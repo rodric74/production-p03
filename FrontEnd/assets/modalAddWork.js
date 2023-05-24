@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const validateButton = document.querySelector('.modal-addwork-validate');
   const titleInput = document.querySelector('.modal-addwork-title-figure');
   const errorElement = document.querySelector('.modal-addwork-error');
+  const formMessage = document.querySelector('#fill-the-field');
+  console.log(formMessage);
+
   let selectedFile = null;
 
   //FERMETURE MODALE - RETOUR DELETE MODALE
@@ -43,7 +46,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     <option value=""></option>
     ${options.join('')}
   `;
-
+  let isFileSizeValid = false;
   // GESTION AJOUT IMAGE
   fileInput.addEventListener('change', (event) => {
     // Récupération du fichier sélectionné
@@ -52,6 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Vérification de la taille du fichier
     if (file && file.size <= 4 * 1024 * 1024) {
       selectedFile = file; // Définir selectedFile seulement si le fichier est valide
+      isFileSizeValid = true;
 
       const imageURL = URL.createObjectURL(selectedFile); // Création de l'URL objet pour l'image
 
@@ -62,30 +66,38 @@ document.addEventListener('DOMContentLoaded', async () => {
       imgElement.src = imageURL; // Attribution de l'URL objet comme source de l'image
       displayDiv.appendChild(imgElement); // Ajout de l'élément img à la div d'affichage
       initialDiv.style.display = 'none'; // Masquage de la div initiale
+      formMessage.textContent = ''; // Effacer le message quand une image valide est sélectionnée
     } else {
       console.error('Le fichier sélectionné dépasse la taille maximale autorisée de 4 Mo.');
-      errorElement.textContent = 'Sélectionnez un fichier de 4 Mo MAX';
+      formMessage.textContent = 'Sélectionnez un fichier de 4 Mo MAX';
+      isFileSizeValid = false;
     }
-
     checkValidationConditions(); // Vérification des conditions pour activer le bouton de validation
+
+    fileInput.addEventListener('click', () => {
+      formMessage.textContent = '';
+    });
   });
 
-  // uploadButton.addEventListener('click', () => {
-  //   event.stopPropagation();
-  //    fileInput.click();
-  // });
 
  // Gestion du titre et de la catégorie
   titleInput.addEventListener('input', checkValidationConditions);
   categorieInput.addEventListener('change', checkValidationConditions);
+  fileInput.addEventListener('change', checkValidationConditions);
 
   function checkValidationConditions() {
-    if (titleInput.value.trim() !== '' && categorieInput.value !== '' && selectedFile) {
+    if (titleInput.value.trim() !== '' && categorieInput.value !== '' && isFileSizeValid) {
       validateButton.disabled = false;
       validateButton.classList.add('validate-button-enabled');
+      formMessage.textContent = ''; // Effacer le message quand tous les champs sont remplis
     } else {
       validateButton.disabled = true;
       validateButton.classList.remove('validate-button-enabled');
+      if (!isFileSizeValid) {
+        formMessage.textContent = 'Sélectionnez un fichier de 4 Mo MAX'; // Afficher un message spécifique si la taille du fichier est invalide
+      } else {
+        formMessage.textContent = 'Merci de remplir tous les champs.'; // Afficher le message si tous les champs ne sont pas remplis
+      }
     }
   }
 

@@ -5,7 +5,11 @@ section {
 }
 
 #login--link{
-    font-weight: bold;
+    font-weight: 600;
+}
+
+#login--section h2{
+    margin-bottom: 40px;
 }
 
 #login--section, #login--form{
@@ -34,7 +38,6 @@ section {
     font-weight: 700;
     color: white;
     background-color: #1d6154;
-    margin: 2em auto;
     width: 179px;
     height: 36px;
     text-align: center;

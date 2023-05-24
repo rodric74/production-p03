@@ -137,7 +137,7 @@ h2{
 }
 
 .navigation{
-	margin-right: 60px;
+	margin-right: 95px;
 	width: 300px;
 }
 
@@ -195,6 +195,7 @@ article {
 
 article p{
 	text-align: justify;
+	color: #3D3D3D;
 }
 
 #introduction h2 {
@@ -213,6 +214,7 @@ article p{
 	display: flex;
 	align-items: center;
 }
+
 
 .edit--presentation{
 	margin-top: 15px;
@@ -247,6 +249,7 @@ article p{
 .categorieFilter {
 	display: flex;
 	justify-content: center;
+	margin-bottom: 50px;
 }
 
 .categorieFilter button {
@@ -276,23 +279,26 @@ article p{
 
   /* END Ajout Dev FrontEnd Les boutons des filtres  */
 
-.gallery {
+  .gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
-	margin-top: 60px;
 }
-
 .gallery img {
 	width: 100%;
-
 }
+
 
 figcaption {
 	font-family: 'work Sans';
+	font-weight: 400;
+	font-size: 13px;
+	line-height: 15px;
+	color: ##3D3D3D;
 	padding-top: 10px;
+	/* padding-bottom: 13px; */
 }
 
 #contact {
