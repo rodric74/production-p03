@@ -1,6 +1,6 @@
 import { fetchWorks, fetchCategories } from './data.js';
 
-console.log('Le script index.js est chargé et exécuté.');
+
 
 // FONCTION POUR AFFICHER LES WORKS
 export function displayWorks(works) {

@@ -31,7 +31,7 @@ document.getElementById('login--form').addEventListener('submit', (event) => {
     .then((data) => {
         // Sauvegarde le token d'authentification dans le stockage local du navigateur
         localStorage.setItem('token', data.token);
-        console.log('Utilisateur connecté avec succès');
+     
         // Crée un nouvel élément script
         const script = document.createElement('script');
       

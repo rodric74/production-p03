@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const titleInput = document.querySelector('.modal-addwork-title-figure');
   const errorElement = document.querySelector('.modal-addwork-error');
   const formMessage = document.querySelector('#fill-the-field');
-  console.log(formMessage);
+
 
   let selectedFile = null;
 
@@ -125,14 +125,14 @@ validateButton.addEventListener('click', async (event) => {
 
   // Vérifier la réponse
   if (response.ok) {
-    console.log('Work envoyé avec succès');
+    console.log('Work envoyé avec succès');// je le garde comme validation 
+
+    
     // Fermer la modale et revenir à la page principale
     closeAddWorkModal();
   
     // Récupérer à nouveau toutes les données de travail
     const works = await fetchWorks();
-  
-    // Afficher les données de travail
     displayWorks(works);
   
     // Mettre à jour les vignettes dans la modale de suppression
