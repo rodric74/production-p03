@@ -1,5 +1,5 @@
-const urlWorks = "http://localhost:5678/api/works";
-const urlCateggories = "http://localhost:5678/api/categories";
+const urlWorks = "https://moncloud.alwaysdata.net/api/works";
+const urlCateggories = "https://moncloud.alwaysdata.net/api/categories";
 
 // FONCTION POUR RECUPERER LES DONNEES DE L'API
 export async function fetchWorks() {

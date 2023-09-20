@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* Ajout de CSS pour une gamme de couleur dans les bleus et une mise en page moderne */
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: #f0f8ff;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #1e90ff;
+        padding: 20px;
+        text-align: center;
+        /* Ajout d'une animation pour l'en-tête */
+        animation: fadeIn 2s;
+      }
+
+      header h1 {
+        color: #fff;
+        margin: 0;
+      }
+
+      nav {
+        background-color: #4682b4;
+        padding: 10px;
+      }
+
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+
+      nav li {
+        margin: 0 10px;
+        /* Ajout d'une animation pour les éléments de navigation */
+        animation: slideIn 1s;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      footer {
+        background-color: #1e90ff;
+        padding: 10px;
+        text-align: center;
+        color: #fff;
+        /* Ajout d'une animation pour le pied de page */
+        animation: fadeIn 2s;
+      }
+
+      /* Définition des animations */
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        0% {
+          transform: translateY(-50px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Mise en forme des inputs et centrage dans la page */
+      input {
+        display: block;
+        margin: 10px auto;
+        padding: 5px;
+        border: 1px solid #333;
+        border-radius: 5px;
+      }
+
+      /* Mise en forme des boutons */
+      button {
+        display: block;
+        margin: 10px auto;
+        padding: 5px 10px;
+        background-color: #1e90ff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* Mise en forme des sections aside */
+      aside {
+        margin: 20px auto;
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- En-tête -->
+    <header>
+      <h1>Lorem Ipsum</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main>
+      <article>
+        <h2>Lorem Ipsum</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec
+          odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla
+          quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent
+          mauris. Fusce nec tellus sed augue semper porta. Mauris massa.
+          Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad
+          litora torquent per conubia nostra, per inceptos himenaeos.
+        </p>
+      </article>
+      <!-- Formulaire d'abonnement à la newsletter -->
+      <aside>
+        <section>
+          <h2>S'abonner à la newsletter</h2>
+          <form>
+            <label for="email">Email :</label>
+            <input type="email" id="email" name="email" required />
+            <button type="submit">S'abonner</button>
+          </form>
+        </section>
+      </aside>
+      <!-- Formulaire de connexion au back-end -->
+      <aside>
+        <section>
+          <h2>Se connecter au back-end</h2>
+          <form>
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" name="username" required />
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" name="password" required />
+            <button type="submit">Se connecter</button>
+          </form>
+        </section>
+      </aside>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+      <p>&copy; 2022 - Tous droits réservés</p>
+    </footer>
+  </body>
+</html>
